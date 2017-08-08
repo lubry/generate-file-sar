@@ -1,4 +1,4 @@
-!/bin/bash
+#!/bin/bash
 #### Script to generate file sar ######
 #Version Of Sysstat
 ##Add the sysstat version from your local environment
