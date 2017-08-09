@@ -1,13 +1,13 @@
 #!/bin/bash
 #### Script to generate file sar ######
-#Version Of Sysstat
-#Version 0.1
+#Alfa Version 0.1
 ##Add the sysstat version from your local environment
 sysstat1="sysstat-7.0.2-3.el5_5.1.x86_64";
 sysstat2="sysstat-9.0.4-27.el6.x86_64";
 sysstat3="sysstat-7.0.2-11.el5.x86_64";
 sysstat4="sysstat-9.0.4-12.el6_0.1.x86_64";
 sysstat5="sysstat-9.0.4-22.el6.x86_64";
+sysstat6="sysstat-10.1.5-11.el7.x86_64";
 
 #Edit parameter according to your needs example {01..28} or {02..30}
 for t in {01..27}; do 
@@ -93,6 +93,22 @@ for t in {01..27}; do
 		#generating merge sar file 
 		##Change the location of the sysstat directory is located in your local machine
 		LC_ALL=C ../../../sysstat/sysstat-9.0.4-22.el6.x86_64/usr/bin/sar/usr/bin/sar -A -f $t/var/log/sa/sa$day >> $t/var/log/sa/$directory/sarMerge
+		
+		done
+	elif [ "$CHECK" == "$sysstat6" ]
+	then	
+		for day in {01..31}; do
+		#checking directory for new sar file
+		directory="newsarfile"
+		if [ ! -d "$t/var/log/sa/$directory" ] ; then
+		mkdir $t/var/log/sa/$directory
+		fi
+		#generating new sar file
+		##Change the location of the sysstat directory is located in your local machine
+		 LC_ALL=C ../../../sysstat/sysstat-10.1.5-11.el7.x86_64/usr/bin/sar -A -f $t/var/log/sa/sa$day > $t/var/log/sa/$directory/sar$day
+		#generating merge sar file 
+		##Change the location of the sysstat directory is located in your local machine
+		LC_ALL=C ../../../sysstat/sysstat-10.1.5-11.el7.x86_64/usr/bin/sar/usr/bin/sar -A -f $t/var/log/sa/sa$day >> $t/var/log/sa/$directory/sarMerge
 		
 		done	
 	else
