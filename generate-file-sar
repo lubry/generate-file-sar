@@ -1,6 +1,7 @@
 #!/bin/bash
 #### Script to generate file sar ######
 #Version Of Sysstat
+#Version 0.1
 ##Add the sysstat version from your local environment
 sysstat1="sysstat-7.0.2-3.el5_5.1.x86_64";
 sysstat2="sysstat-9.0.4-27.el6.x86_64";
